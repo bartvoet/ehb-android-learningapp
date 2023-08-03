@@ -1,12 +1,14 @@
 package be.ehb.bv.learningapp
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
+import java.util.logging.Logger
 
 
 /**
@@ -19,6 +21,7 @@ class FirstFragment : Fragment() {
     // onDestroyView.
 
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,17 +29,21 @@ class FirstFragment : Fragment() {
 
         val binding = inflater.inflate(R.layout.fragment_first, container, false)
         val linearLayout = binding.findViewById<LinearLayout>(R.id.linearLayout)
-        val rowView = inflater.inflate(R.layout.field, null)
+        //val rowView = inflater.inflate(R.layout.field, null)
         //linearLayout.addView(rowView)
         // Add the new row before the add field button.
-        val ET = EditText(activity)
-        ET.setText("LOL")
-        ET.id = 5
-        ET.layoutParams = ViewGroup.LayoutParams(
-            ViewGroup.LayoutParams.WRAP_CONTENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
-        )
-        linearLayout.addView(ET)
+        for(i in 1..5) {
+            val ET = EditText(activity)
+            ET.setText("LOL")
+            ET.setOnClickListener { Log.i("test", "test$i") }
+            ET.id = 5
+            ET.layoutParams = ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            linearLayout.addView(ET)
+
+        }
         return binding
 
     }
