@@ -33,19 +33,22 @@ class FirstFragment : Fragment() {
         //linearLayout.addView(rowView)
         // Add the new row before the add field button.
         for(i in 1..5) {
-            val ET = EditText(activity)
-            ET.setText("LOL")
-            ET.setOnClickListener { Log.i("test", "test$i") }
-            ET.id = 5
-            ET.layoutParams = ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-            )
-            linearLayout.addView(ET)
-
+            addEditText(i.toString(), linearLayout)
         }
         return binding
 
+    }
+
+    private fun addEditText(text: String, linearLayout: LinearLayout) {
+        val ET = EditText(activity)
+        ET.setText("LOL")
+        ET.setOnClickListener { Log.i("test", text) }
+        ET.id = 5
+        ET.layoutParams = ViewGroup.LayoutParams(
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+        linearLayout.addView(ET)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
