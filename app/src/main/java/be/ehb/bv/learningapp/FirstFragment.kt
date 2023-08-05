@@ -43,7 +43,6 @@ class FirstFragment : Fragment() {
         val ET = EditText(activity)
         ET.setText("LOL")
         ET.setOnClickListener { Log.i("test", text) }
-        ET.id = 5
         ET.layoutParams = ViewGroup.LayoutParams(
             ViewGroup.LayoutParams.WRAP_CONTENT,
             ViewGroup.LayoutParams.WRAP_CONTENT
