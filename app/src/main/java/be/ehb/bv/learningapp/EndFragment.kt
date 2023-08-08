@@ -6,11 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import be.ehb.bv.learningapp.databinding.FragmentSecondBinding
+import be.ehb.bv.learningapp.databinding.EndFragmentBinding
 
-class SecondFragment : Fragment() {
+class EndFragment : Fragment() {
 
-    private var _binding: FragmentSecondBinding? = null
+    private var _binding: EndFragmentBinding? = null
 
     private val binding get() = _binding!!
 
@@ -19,7 +19,7 @@ class SecondFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentSecondBinding.inflate(inflater, container, false)
+        _binding = EndFragmentBinding.inflate(inflater, container, false)
         return binding.root
 
     }

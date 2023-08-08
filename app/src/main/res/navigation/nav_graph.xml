@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="be.ehb.bv.learningapp.FirstFragment"
+        android:name="be.ehb.bv.learningapp.QuestionFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/question_fragment">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
@@ -17,9 +17,9 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="be.ehb.bv.learningapp.SecondFragment"
+        android:name="be.ehb.bv.learningapp.EndFragment"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/end_fragment">
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"

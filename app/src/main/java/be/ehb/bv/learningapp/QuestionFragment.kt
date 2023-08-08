@@ -9,13 +9,11 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import be.ehb.bv.learningapp.databinding.FragmentFirstBinding
-import be.ehb.bv.learningapp.databinding.FragmentSecondBinding
-import java.util.logging.Logger
+import be.ehb.bv.learningapp.databinding.QuestionFragmentBinding
 
-class FirstFragment : Fragment() {
+class QuestionFragment : Fragment() {
 
-    private var _binding: FragmentFirstBinding? = null
+    private var _binding: QuestionFragmentBinding? = null
 
     private val binding get() = _binding!!
 
@@ -25,7 +23,7 @@ class FirstFragment : Fragment() {
     ): View? {
 
         //_binding = inflater.inflate(R.layout.fragment_first, container, false)
-        _binding = FragmentFirstBinding.inflate(inflater, container, false)
+        _binding = QuestionFragmentBinding.inflate(inflater, container, false)
         val linearLayout = binding.root.rootView as LinearLayout //
 
         for(i in 1..5) {
