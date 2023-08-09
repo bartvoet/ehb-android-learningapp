@@ -2,11 +2,14 @@ package be.ehb.bv.learningapp.model
 
 import java.util.*
 
-class RandomItemPicker<T> : ItemPicker<T> {
+class RandomItemPicker<T>( val items: List<T>) : ItemPicker<T> {
     private val random = Random()
+    private val l : MutableList<Int> = items.withIndex().map { it.index  }.toMutableList()
 
-    override fun pickItem(fromTotal: Int): Int {
-        return random.nextInt(fromTotal)
+    override fun pickItem(): T {
+        val pickIndex = random.nextInt(l.size)
+        val posInItems = l[pickIndex]
+        return items[posInItems]
     }
 
     override fun questionsRemaining(): Boolean {
