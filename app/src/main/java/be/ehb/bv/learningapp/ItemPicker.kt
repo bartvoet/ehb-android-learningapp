@@ -1,7 +1,7 @@
-package be.ehb.bv.learningapp.model
+package be.ehb.bv.learningapp
 
 interface ItemPicker<T> {
     fun questionsRemaining():Boolean
     fun closeItem(questionId: Int)
-    fun pickItem(): T
+    fun pickItem(): Pair<Int,T>
 }

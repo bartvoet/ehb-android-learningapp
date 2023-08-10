@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import be.ehb.bv.learningapp.R
 import be.ehb.bv.learningapp.databinding.EndFragmentBinding
 
 class EndFragment : Fragment() {

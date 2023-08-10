@@ -1,5 +1,6 @@
 package be.ehb.bv.learningapp
 
+import be.ehb.bv.learningapp.model.RandomItemPicker
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -12,6 +13,13 @@ import org.junit.Assert.*
 class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+        val picker = RandomItemPicker(listOf(4,5,6))
+        while(picker.questionsRemaining()) {
+            val (a,b) = picker.pickItem()
+            println("$a $b")
+            picker.closeItem(a)
+        }
+        //picker.
+        //assertEquals(4, 2 + 2)
     }
 }

@@ -8,14 +8,30 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import be.ehb.bv.learningapp.databinding.QuestionFragmentBinding
+import be.ehb.bv.learningapp.model.ListQuestion
+import be.ehb.bv.learningapp.model.Question
+import be.ehb.bv.learningapp.viewmodel.QuestionSessionViewModel
+import be.ehb.bv.learningapp.viewmodel.QuestionViewModelFactory
+import java.util.logging.Logger
 
 class QuestionFragment : Fragment() {
 
     private var _binding: QuestionFragmentBinding? = null
 
     private val binding get() = _binding!!
+
+    private lateinit var questionSession : QuestionSessionViewModel
+
+    private val questions : List<Question> =
+        listOf(
+            ListQuestion("hello", listOf("a","b","c")),
+            ListQuestion("world", listOf("a","b","c")),
+            ListQuestion("a", listOf("a","b","c")),
+            ListQuestion("b", listOf("a","b","c"))
+        )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,6 +41,9 @@ class QuestionFragment : Fragment() {
         //_binding = inflater.inflate(R.layout.fragment_first, container, false)
         _binding = QuestionFragmentBinding.inflate(inflater, container, false)
         val linearLayout = binding.root.rootView as LinearLayout //
+
+        questionSession = ViewModelProvider(this, QuestionViewModelFactory(questions))
+                    .get(QuestionSessionViewModel::class.java)
 
         for(i in 1..5) {
             addEditText(i.toString(), linearLayout)
@@ -47,8 +66,19 @@ class QuestionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
         binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+            if(!questionSession.picker.questionsRemaining()) {
+                Logger.getLogger("hello").info("ok")
+                findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+            } else {
+                val (index, item) = questionSession.picker.pickItem()
+                questionSession.picker.closeItem(index)
+                Logger.getLogger("hello").info("index: " + index)
+                //findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+            }
+
         }
     }
 
