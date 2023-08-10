@@ -34,14 +34,14 @@ class QuestionFragment : Fragment() {
     }
 
     private fun addEditText(text: String, linearLayout: LinearLayout) {
-        val ET = EditText(activity)
-        ET.setText("LOL!!")
-        ET.setOnClickListener { Log.i("test", text) }
-        ET.layoutParams = ViewGroup.LayoutParams(
+        val et = EditText(activity)
+        et.setText("LOL!!")
+        et.setOnClickListener { Log.i("test", text) }
+        et.layoutParams = ViewGroup.LayoutParams(
             ViewGroup.LayoutParams.WRAP_CONTENT,
             ViewGroup.LayoutParams.WRAP_CONTENT
         )
-        linearLayout.addView(ET)
+        linearLayout.addView(et)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
