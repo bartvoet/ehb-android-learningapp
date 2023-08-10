@@ -42,7 +42,7 @@ class QuestionFragment : Fragment() {
         _binding = QuestionFragmentBinding.inflate(inflater, container, false)
         val linearLayout = binding.root.rootView as LinearLayout //
 
-        questionSession = ViewModelProvider(this, QuestionViewModelFactory(questions))
+        questionSession = ViewModelProvider(requireActivity(), QuestionViewModelFactory(questions))
                     .get(QuestionSessionViewModel::class.java)
 
         for(i in 1..5) {
@@ -80,7 +80,7 @@ class QuestionFragment : Fragment() {
                         Logger.getLogger("hello").info("Number of answers: $size")
                     }
                 })
-
+                findNavController().navigate(R.id.action_FirstFragment_to_FirstFragment)
             }
 
         }
