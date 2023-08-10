@@ -37,24 +37,27 @@ class QuestionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        //_binding = inflater.inflate(R.layout.fragment_first, container, false)
         _binding = QuestionFragmentBinding.inflate(inflater, container, false)
         val linearLayout = binding.root.rootView as LinearLayout //
 
         questionSession = ViewModelProvider(requireActivity(), QuestionViewModelFactory(questions))
                     .get(QuestionSessionViewModel::class.java)
 
-        for(i in 1..5) {
-            addEditText(i.toString(), linearLayout)
-        }
+        questionSession.currentQuestion.ask( object : Question.QuestionInterface {
+            override fun askListQuestion(question: String, size: Int) {
+                repeat(size) {
+                    addEditText(question, linearLayout)
+                }
+            }
+        })
+
         return binding.root
 
     }
 
     private fun addEditText(text: String, linearLayout: LinearLayout) {
         val et = EditText(activity)
-        et.setText("LOL!!")
+        et.setText(text)
         et.setOnClickListener { Log.i("test", text) }
         et.layoutParams = ViewGroup.LayoutParams(
             ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -71,15 +74,7 @@ class QuestionFragment : Fragment() {
                 Logger.getLogger("hello").info("ok")
                 findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
             } else {
-                val (index, question) = questionSession.picker.pickItem()
-                questionSession.picker.closeItem(index)
-                Logger.getLogger("hello").info("index: " + index)
-                question.ask( object : Question.QuestionInterface {
-                    override fun askListQuestion(question: String, size: Int) {
-                        Logger.getLogger("hello").info("Question: $question")
-                        Logger.getLogger("hello").info("Number of answers: $size")
-                    }
-                })
+                questionSession.selectQuestion()
                 findNavController().navigate(R.id.action_FirstFragment_to_FirstFragment)
             }
 

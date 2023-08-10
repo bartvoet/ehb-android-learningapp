@@ -5,9 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import be.ehb.bv.learningapp.R
 import be.ehb.bv.learningapp.databinding.EndFragmentBinding
+import be.ehb.bv.learningapp.viewmodel.QuestionSessionViewModel
+import be.ehb.bv.learningapp.viewmodel.QuestionViewModelFactory
 
 class EndFragment : Fragment() {
 
@@ -15,11 +18,14 @@ class EndFragment : Fragment() {
 
     private val binding get() = _binding!!
 
+    private lateinit var questionSession : QuestionSessionViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        questionSession = ViewModelProvider(requireActivity())
+            .get(QuestionSessionViewModel::class.java)
         _binding = EndFragmentBinding.inflate(inflater, container, false)
         return binding.root
 
@@ -30,6 +36,7 @@ class EndFragment : Fragment() {
 
         binding.buttonSecond.setOnClickListener {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+            questionSession.renew()
         }
     }
 
