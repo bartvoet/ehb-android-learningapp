@@ -66,17 +66,21 @@ class QuestionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
         binding.buttonFirst.setOnClickListener {
             if(!questionSession.picker.questionsRemaining()) {
                 Logger.getLogger("hello").info("ok")
                 findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
             } else {
-                val (index, item) = questionSession.picker.pickItem()
+                val (index, question) = questionSession.picker.pickItem()
                 questionSession.picker.closeItem(index)
                 Logger.getLogger("hello").info("index: " + index)
-                //findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+                question.ask( object : Question.QuestionInterface {
+                    override fun askListQuestion(question: String, size: Int) {
+                        Logger.getLogger("hello").info("Question: $question")
+                        Logger.getLogger("hello").info("Number of answers: $size")
+                    }
+                })
+
             }
 
         }

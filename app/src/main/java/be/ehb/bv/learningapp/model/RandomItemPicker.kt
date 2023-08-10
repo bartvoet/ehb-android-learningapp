@@ -3,7 +3,7 @@ package be.ehb.bv.learningapp.model
 import be.ehb.bv.learningapp.ItemPicker
 import java.util.*
 
-class RandomItemPicker<T>( val items: List<T>) : ItemPicker<T> {
+class RandomItemPicker<T>(private val items: List<T>) : ItemPicker<T> {
     private val random = Random()
 
     private val l : MutableList<Int> = items.withIndex().map { it.index  }.toMutableList()
