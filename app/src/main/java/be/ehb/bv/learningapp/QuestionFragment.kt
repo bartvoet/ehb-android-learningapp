@@ -85,11 +85,12 @@ class QuestionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.buttonFirst.setOnClickListener {
-//            if(questionSession.currentQuestion
-//                    .validate(FragmentQuestionInterface())
-//                    .isOK()) {
+            if(questionSession.currentQuestion
+                    .validate(FragmentQuestionInterface())
+                    .isOK()) {
                 questionSession.markQuestionAsFinished()
-//            }
+            }
+
             if(!questionSession.picker.questionsRemaining()) {
                 findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
             } else {
