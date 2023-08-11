@@ -36,44 +36,44 @@ class QuestionFragment : Fragment() {
             )
     }
 
+    inner class FragmentQuestionInterface() : Question.QuestionInterface {
+        private val linearLayout = binding.root.rootView as LinearLayout
+
+        override fun askListQuestion(question: String, size: Int) {
+            binding.questionTextView.text = question
+            repeat(size) {
+                addEditText("", linearLayout)
+            }
+        }
+
+        private fun addEditText(text: String, linearLayout: LinearLayout) {
+            val et = EditText(activity)
+            et.setText(text)
+            et.setOnClickListener { Log.i("test", text) }
+            et.layoutParams = ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            linearLayout.addView(et)
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = QuestionFragmentBinding.inflate(inflater, container, false)
-        val linearLayout = binding.root.rootView as LinearLayout //
 
         questionSession = ViewModelProvider(requireActivity(), QuestionViewModelFactory(QuestionsContainer.questions))
                     .get(QuestionSessionViewModel::class.java)
 
-        questionSession.currentQuestion.ask( object : Question.QuestionInterface {
-            override fun askListQuestion(question: String, size: Int) {
-                binding.questionTextView.text = question
-                repeat(size) {
-                    addEditText("", linearLayout)
-                }
-            }
-        })
+        questionSession.currentQuestion.ask( FragmentQuestionInterface())
 
         return binding.root
-
-    }
-
-    private fun addEditText(text: String, linearLayout: LinearLayout) {
-        val et = EditText(activity)
-        et.setText(text)
-        et.setOnClickListener { Log.i("test", text) }
-        et.layoutParams = ViewGroup.LayoutParams(
-            ViewGroup.LayoutParams.WRAP_CONTENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
-        )
-        linearLayout.addView(et)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
 
         binding.buttonFirst.setOnClickListener {
             for (view in binding.root.children) {
@@ -87,11 +87,6 @@ class QuestionFragment : Fragment() {
                 questionSession.selectQuestion()
                 findNavController().navigate(R.id.action_FirstFragment_to_FirstFragment)
             }
-
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
     }
 }
