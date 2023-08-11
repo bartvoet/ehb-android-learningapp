@@ -27,7 +27,7 @@ class QuestionFragment : Fragment() {
 
     private val questions : List<Question> =
         listOf(
-            ListQuestion("hello", listOf("a","b","c")),
+            ListQuestion("hello", listOf("a","b")),
             ListQuestion("world", listOf("a","b","c")),
             ListQuestion("a", listOf("a","b","c")),
             ListQuestion("b", listOf("a","b","c"))
@@ -45,8 +45,9 @@ class QuestionFragment : Fragment() {
 
         questionSession.currentQuestion.ask( object : Question.QuestionInterface {
             override fun askListQuestion(question: String, size: Int) {
+                binding.questionTextView.text = question
                 repeat(size) {
-                    addEditText(question, linearLayout)
+                    addEditText("", linearLayout)
                 }
             }
         })
