@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.LinearLayout
+import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -72,9 +73,15 @@ class QuestionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
         binding.buttonFirst.setOnClickListener {
+            for (view in binding.root.children) {
+                if(view is EditText) {
+                    Logger.getLogger("debugging").info("value= " + view.text.toString())
+                }
+            }
             if(!questionSession.picker.questionsRemaining()) {
-                Logger.getLogger("hello").info("ok")
                 findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
             } else {
                 questionSession.selectQuestion()
