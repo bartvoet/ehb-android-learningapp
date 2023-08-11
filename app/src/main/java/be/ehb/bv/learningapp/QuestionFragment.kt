@@ -76,6 +76,7 @@ class QuestionFragment : Fragment() {
             QuestionViewModelFactory(QuestionsContainer.questions)
         )[QuestionSessionViewModel::class.java]
 
+        questionSession.selectQuestion()
         questionSession.currentQuestion.ask( FragmentQuestionInterface())
 
         return binding.root
@@ -85,11 +86,15 @@ class QuestionFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonFirst.setOnClickListener {
+//            if(questionSession.currentQuestion
+//                    .validate(FragmentQuestionInterface())
+//                    .isOK()) {
+                questionSession.markQuestionAsFinished()
+//            }
             if(!questionSession.picker.questionsRemaining()) {
                 findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
             } else {
                 questionSession.selectQuestion()
-                questionSession.markQuestionAsFinished()
                 findNavController().navigate(R.id.action_FirstFragment_to_FirstFragment)
             }
         }

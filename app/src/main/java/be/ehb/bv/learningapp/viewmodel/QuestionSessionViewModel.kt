@@ -10,11 +10,12 @@ import java.util.logging.Logger
 class QuestionSessionViewModel(private val questions : List<Question>) : ViewModel() {
 
     var picker : ItemPicker<Question> = RandomItemPicker(questions)
-    var currentQuestion = picker.pickItem().second
+    lateinit var currentQuestion : Question
 
-    fun selectQuestion()  {
+    fun selectQuestion() : Question  {
         val (_, currentQuestion) = picker.pickItem()
         this.currentQuestion = currentQuestion
+        return this.currentQuestion
     }
 
     fun markQuestionAsFinished() {
