@@ -25,13 +25,15 @@ class QuestionFragment : Fragment() {
 
     private lateinit var questionSession : QuestionSessionViewModel
 
-    private val questions : List<Question> =
-        listOf(
-            ListQuestion("hello", listOf("a","b")),
-            ListQuestion("world", listOf("a","b","c")),
-            ListQuestion("a", listOf("a","b","c")),
-            ListQuestion("b", listOf("a","b","c"))
-        )
+    companion object QuestionsContainer {
+        private val questions: List<Question> =
+            listOf(
+                ListQuestion("hello", listOf("a", "b")),
+                ListQuestion("world", listOf("a", "b", "c")),
+                ListQuestion("a", listOf("a", "b", "c")),
+                ListQuestion("b", listOf("a", "b", "c"))
+            )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,7 +42,7 @@ class QuestionFragment : Fragment() {
         _binding = QuestionFragmentBinding.inflate(inflater, container, false)
         val linearLayout = binding.root.rootView as LinearLayout //
 
-        questionSession = ViewModelProvider(requireActivity(), QuestionViewModelFactory(questions))
+        questionSession = ViewModelProvider(requireActivity(), QuestionViewModelFactory(QuestionsContainer.questions))
                     .get(QuestionSessionViewModel::class.java)
 
         questionSession.currentQuestion.ask( object : Question.QuestionInterface {
