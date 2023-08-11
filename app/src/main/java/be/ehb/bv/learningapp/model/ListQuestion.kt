@@ -1,6 +1,6 @@
 package be.ehb.bv.learningapp.model
 
-class ListQuestion(val question : String, val answers: List<String>) : Question {
+data class ListQuestion(private val question : String, private val answers: List<String>) : Question {
 
     override fun ask(qi: Question.QuestionInterface) {
         qi.askListQuestion(question, answers.size)
