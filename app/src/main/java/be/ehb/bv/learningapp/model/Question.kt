@@ -9,6 +9,7 @@ interface Question {
 
     interface QuestionInterface {
         fun askListQuestion(question: String, size: Int)
+        fun getFeedback(): List<String>
     }
 
     interface QuestionFeedback {

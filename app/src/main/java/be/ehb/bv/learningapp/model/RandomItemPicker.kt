@@ -5,18 +5,19 @@ import java.util.*
 
 class RandomItemPicker<T>(private val items: List<T>) : ItemPicker<T> {
     private val random = Random()
+    private var pickIndex = 0
 
     private val l : MutableList<Int> = items.withIndex().map { it.index  }.toMutableList()
 
     override fun pickItem(): Pair<Int,T> {
-        val pickIndex = random.nextInt(l.size)
+        this.pickIndex = random.nextInt(l.size)
         val posInItems = l[pickIndex]
-        return pickIndex to items[posInItems]
+        return this.pickIndex to items[posInItems]
     }
 
     override fun questionsRemaining() = l.isNotEmpty()
 
-    override fun closeItem(questionId: Int) {
-        l.removeAt(questionId)
+    override fun closeLastPick() {
+        l.removeAt(this.pickIndex)
     }
 }

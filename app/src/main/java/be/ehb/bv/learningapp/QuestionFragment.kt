@@ -56,6 +56,13 @@ class QuestionFragment : Fragment() {
             )
             linearLayout.addView(et)
         }
+
+        override fun getFeedback(): List<String> =
+            binding.root.children
+                .filterIsInstance( EditText::class.java )
+                .map { it.text.toString()}
+                .toList()
+
     }
 
     override fun onCreateView(
@@ -85,6 +92,7 @@ class QuestionFragment : Fragment() {
                 findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
             } else {
                 questionSession.selectQuestion()
+                questionSession.markQuestionAsFinished()
                 findNavController().navigate(R.id.action_FirstFragment_to_FirstFragment)
             }
         }

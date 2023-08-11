@@ -13,9 +13,12 @@ class QuestionSessionViewModel(private val questions : List<Question>) : ViewMod
     var currentQuestion = picker.pickItem().second
 
     fun selectQuestion()  {
-        val (pos, currentQuestion) = picker.pickItem()
-        picker.closeItem(pos)
+        val (_, currentQuestion) = picker.pickItem()
         this.currentQuestion = currentQuestion
+    }
+
+    fun markQuestionAsFinished() {
+        picker.closeLastPick()
     }
 
     override fun onCleared() {
