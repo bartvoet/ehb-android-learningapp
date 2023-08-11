@@ -37,7 +37,7 @@ class QuestionFragment : Fragment() {
     }
 
     inner class FragmentQuestionInterface() : Question.QuestionInterface {
-        private val linearLayout = binding.root.rootView as LinearLayout
+        private val linearLayout = binding.root
 
         override fun askListQuestion(question: String, size: Int) {
             binding.questionTextView.text = question
@@ -84,7 +84,6 @@ class QuestionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding.buttonFirst.setOnClickListener {
 //            if(questionSession.currentQuestion
 //                    .validate(FragmentQuestionInterface())
