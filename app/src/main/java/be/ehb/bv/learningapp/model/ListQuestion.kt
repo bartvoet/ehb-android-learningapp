@@ -7,10 +7,10 @@ data class ListQuestion(private val question : String, private val answers: List
     }
 
     override fun validate(qi: Question.QuestionInterface): Question.QuestionFeedback {
-        TODO("Not yet implemented")
-    }
-
-    override fun askAndValidate(qi: Question.QuestionInterface): Question.QuestionFeedback {
-        TODO("Not yet implemented")
+        //val answers = qi.getFeedback()
+        // TODO: compare lists
+        return object : Question.QuestionFeedback {
+            override fun isOK() = true
+        }
     }
 }

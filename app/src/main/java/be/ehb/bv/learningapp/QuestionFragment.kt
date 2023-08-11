@@ -71,8 +71,10 @@ class QuestionFragment : Fragment() {
     ): View? {
         _binding = QuestionFragmentBinding.inflate(inflater, container, false)
 
-        questionSession = ViewModelProvider(requireActivity(), QuestionViewModelFactory(QuestionsContainer.questions))
-                    .get(QuestionSessionViewModel::class.java)
+        questionSession = ViewModelProvider(
+            requireActivity(),
+            QuestionViewModelFactory(QuestionsContainer.questions)
+        )[QuestionSessionViewModel::class.java]
 
         questionSession.currentQuestion.ask( FragmentQuestionInterface())
 
@@ -83,11 +85,6 @@ class QuestionFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonFirst.setOnClickListener {
-            for (view in binding.root.children) {
-                if(view is EditText) {
-                    Logger.getLogger("debugging").info("value= " + view.text.toString())
-                }
-            }
             if(!questionSession.picker.questionsRemaining()) {
                 findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
             } else {

@@ -5,7 +5,10 @@ interface Question {
 
     fun validate(qi:QuestionInterface): QuestionFeedback
 
-    fun askAndValidate(qi : QuestionInterface) : QuestionFeedback
+    fun askAndValidate(qi : QuestionInterface) : QuestionFeedback {
+        ask(qi)
+        return validate(qi)
+    }
 
     interface QuestionInterface {
         fun askListQuestion(question: String, size: Int)
@@ -13,7 +16,7 @@ interface Question {
     }
 
     interface QuestionFeedback {
-
+        fun isOK() : Boolean
     }
 }
 
