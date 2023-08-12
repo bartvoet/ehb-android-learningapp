@@ -11,8 +11,13 @@ import android.view.Menu
 import android.view.MenuItem
 import be.ehb.bv.learning.app.R
 import be.ehb.bv.learning.app.databinding.ActivityMainBinding
+import java.util.logging.Logger
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), QuestionController {
+
+    override fun nextQuestion() {
+        Logger.getLogger("hello").info("a")
+    }
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding

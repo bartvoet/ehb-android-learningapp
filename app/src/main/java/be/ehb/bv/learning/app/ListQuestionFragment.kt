@@ -1,5 +1,6 @@
 package be.ehb.bv.learning.app
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -81,6 +82,10 @@ class ListQuestionFragment : Fragment() {
         return binding.root
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.buttonFirst.setOnClickListener {
@@ -97,5 +102,7 @@ class ListQuestionFragment : Fragment() {
                 findNavController().navigate(R.id.action_FirstFragment_to_FirstFragment)
             }
         }
+
+
     }
 }
