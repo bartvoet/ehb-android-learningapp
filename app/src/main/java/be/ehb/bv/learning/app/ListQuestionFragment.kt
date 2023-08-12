@@ -14,8 +14,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import be.ehb.bv.learning.app.databinding.ListQuestionFragmentBinding
 import be.ehb.bv.learning.app.viewmodel.QuestionSessionViewModel
-import be.ehb.bv.learning.app.viewmodel.QuestionViewModelFactory
-import be.ehb.bv.learning.core.model.ListQuestion
 import be.ehb.bv.learning.core.model.Question
 
 class ListQuestionFragment : Fragment() {
@@ -25,14 +23,14 @@ class ListQuestionFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var questionSession : QuestionSessionViewModel
+    private lateinit var qc : QuestionController
 
     inner class FragmentQuestionInterface() : Question.QuestionInterface {
-        private val linearLayout = binding.root
 
         override fun askListQuestion(question: String, size: Int) {
             binding.questionTextView.text = question
             repeat(size) {
-                addEditText("", linearLayout)
+                addEditText("", binding.root)
             }
         }
 
@@ -55,6 +53,12 @@ class ListQuestionFragment : Fragment() {
 
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        var qc = context as QuestionController
+        qc?.registerQuestionInterface(FragmentQuestionInterface())
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -68,27 +72,4 @@ class ListQuestionFragment : Fragment() {
         return binding.root
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.buttonFirst.setOnClickListener {
-            if(questionSession.currentQuestion
-                    .validate(FragmentQuestionInterface())
-                    .isOK()) {
-                questionSession.markQuestionAsFinished()
-            }
-
-            if(!questionSession.picker.questionsRemaining()) {
-                findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-            } else {
-                questionSession.selectQuestion()
-                findNavController().navigate(R.id.action_FirstFragment_to_FirstFragment)
-            }
-        }
-
-
-    }
 }

@@ -10,6 +10,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import be.ehb.bv.learning.app.R
 import be.ehb.bv.learning.app.databinding.ActivityMainBinding
 import be.ehb.bv.learning.app.viewmodel.QuestionSessionViewModel
@@ -30,9 +31,26 @@ class MainActivity : AppCompatActivity(), QuestionController {
             )
     }
 
+    private lateinit var  qi: Question.QuestionInterface
+
+    override fun registerQuestionInterface(qi: Question.QuestionInterface) {
+        this.qi = qi
+    }
 
     override fun nextQuestion() {
         Logger.getLogger("hello").info("a")
+        if(questionSession.currentQuestion
+                .validate(this.qi)
+                .isOK()) {
+            questionSession.markQuestionAsFinished()
+        }
+
+        if(!questionSession.picker.questionsRemaining()) {
+            findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.action_FirstFragment_to_SecondFragment)
+        } else {
+            questionSession.selectQuestion()
+            findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.action_FirstFragment_to_FirstFragment)
+        }
     }
 
     private lateinit var questionSession: QuestionSessionViewModel
