@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/action_nav_graph"
+    app:startDestination="@id/startActionFragment">
+
+    <fragment
+        android:id="@+id/startActionFragment"
+        android:name="be.ehb.bv.learning.app.StartActionFragment"
+        android:label="start_action_fragment"
+        tools:layout="@layout/start_action_fragment">
+        <action
+            android:id="@+id/action_StartFragment_to_ActionFragment"
+            app:destination="@id/actionFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/actionFragment"
+        android:name="be.ehb.bv.learning.app.ActionFragment"
+        android:label="start_action_fragment"
+        tools:layout="@layout/action_fragment" >
+        <action
+            android:id="@+id/action_ActionFragment_to_EndActionFragment"
+            app:destination="@id/endActionFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/endActionFragment"
+        android:name="be.ehb.bv.learning.app.EndActionFragment"
+        android:label="end_action_fragment"
+        tools:layout="@layout/action_fragment">
+        <action
+            android:id="@+id/action_EndActionFragment_to_StartActionFragment"
+            app:destination="@id/startActionFragment" />
+
+    </fragment>
+
+
+</navigation>

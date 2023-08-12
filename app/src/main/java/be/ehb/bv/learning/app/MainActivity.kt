@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity(), QuestionController {
 
         if(!questionSession.picker.questionsRemaining()) {
             findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.action_FirstFragment_to_SecondFragment)
+            findNavController(R.id.nav_host_fragment_action).navigate(R.id.action_ActionFragment_to_EndActionFragment)
         } else {
             questionSession.selectQuestion()
             findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.action_FirstFragment_to_FirstFragment)

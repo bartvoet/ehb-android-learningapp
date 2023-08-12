@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import be.ehb.bv.learning.app.R
 import be.ehb.bv.learning.app.databinding.StartFragmentBinding
@@ -23,14 +24,6 @@ class StartFragment : Fragment() {
         _binding = StartFragmentBinding.inflate(inflater, container, false)
         return binding.root
 
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.gettingStartedd.setOnClickListener {
-            findNavController().navigate(R.id.action_StartFragment_to_SecondFragment)
-        }
     }
 
     override fun onDestroyView() {
