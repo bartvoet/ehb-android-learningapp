@@ -1,4 +1,4 @@
-package be.ehb.bv.learningapp
+package be.ehb.bv.learning.app
 
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
@@ -9,7 +9,8 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
-import be.ehb.bv.learningapp.databinding.ActivityMainBinding
+import be.ehb.bv.learning.app.R
+import be.ehb.bv.learning.app.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package be.ehb.bv.learningapp
+package be.ehb.bv.learning.app
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,10 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import be.ehb.bv.learningapp.R
-import be.ehb.bv.learningapp.databinding.EndFragmentBinding
-import be.ehb.bv.learningapp.viewmodel.QuestionSessionViewModel
-import be.ehb.bv.learningapp.viewmodel.QuestionViewModelFactory
+import be.ehb.bv.learning.app.viewmodel.QuestionSessionViewModel
+import be.ehb.bv.learning.app.R
+
+
+import be.ehb.bv.learning.app.databinding.EndFragmentBinding
 
 class EndFragment : Fragment() {
 

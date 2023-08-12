@@ -1,4 +1,4 @@
-package be.ehb.bv.learningapp
+package be.ehb.bv.learning.app
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

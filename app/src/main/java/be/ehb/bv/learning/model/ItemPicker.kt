@@ -1,4 +1,4 @@
-package be.ehb.bv.learningapp.model
+package be.ehb.bv.learning.model
 
 interface ItemPicker<T> {
     fun questionsRemaining():Boolean

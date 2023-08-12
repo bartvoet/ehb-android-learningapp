@@ -1,4 +1,4 @@
-package be.ehb.bv.learningapp
+package be.ehb.bv.learning.app
 
 import android.os.Bundle
 import android.util.Log
@@ -11,12 +11,12 @@ import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import be.ehb.bv.learningapp.databinding.QuestionFragmentBinding
-import be.ehb.bv.learningapp.model.ListQuestion
-import be.ehb.bv.learningapp.model.Question
-import be.ehb.bv.learningapp.viewmodel.QuestionSessionViewModel
-import be.ehb.bv.learningapp.viewmodel.QuestionViewModelFactory
-import java.util.logging.Logger
+import be.ehb.bv.learning.model.ListQuestion
+import be.ehb.bv.learning.model.Question
+import be.ehb.bv.learning.app.viewmodel.QuestionSessionViewModel
+import be.ehb.bv.learning.app.viewmodel.QuestionViewModelFactory
+import be.ehb.bv.learning.app.R
+import be.ehb.bv.learning.app.databinding.QuestionFragmentBinding
 
 class QuestionFragment : Fragment() {
 
@@ -73,7 +73,7 @@ class QuestionFragment : Fragment() {
 
         questionSession = ViewModelProvider(
             requireActivity(),
-            QuestionViewModelFactory(QuestionsContainer.questions)
+            QuestionViewModelFactory(questions)
         )[QuestionSessionViewModel::class.java]
 
         questionSession.selectQuestion()

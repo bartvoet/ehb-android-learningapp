@@ -1,9 +1,9 @@
-package be.ehb.bv.learningapp.model
+package be.ehb.bv.learning.model
 
 interface Question {
-    fun ask(qi:QuestionInterface);
+    fun ask(qi: QuestionInterface);
 
-    fun validate(qi:QuestionInterface): QuestionFeedback
+    fun validate(qi: QuestionInterface): QuestionFeedback
 
     fun askAndValidate(qi : QuestionInterface) : QuestionFeedback {
         ask(qi)

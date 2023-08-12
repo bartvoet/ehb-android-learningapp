@@ -1,4 +1,4 @@
-package be.ehb.bv.learningapp
+package be.ehb.bv.learning.app
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,9 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import be.ehb.bv.learningapp.R
-import be.ehb.bv.learningapp.databinding.EndFragmentBinding
-import be.ehb.bv.learningapp.databinding.StartFragmentBinding
+import be.ehb.bv.learning.app.R
+import be.ehb.bv.learning.app.databinding.StartFragmentBinding
 
 class StartFragment : Fragment() {
 

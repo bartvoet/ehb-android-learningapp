@@ -1,10 +1,10 @@
-package be.ehb.bv.learningapp.viewmodel
+package be.ehb.bv.learning.app.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import be.ehb.bv.learningapp.model.ItemPicker
-import be.ehb.bv.learningapp.model.Question
-import be.ehb.bv.learningapp.model.RandomItemPicker
+import be.ehb.bv.learning.model.ItemPicker
+import be.ehb.bv.learning.model.Question
+import be.ehb.bv.learning.model.RandomItemPicker
 import java.util.logging.Logger
 
 class QuestionSessionViewModel(private val questions : List<Question>) : ViewModel() {
@@ -12,7 +12,7 @@ class QuestionSessionViewModel(private val questions : List<Question>) : ViewMod
     var picker : ItemPicker<Question> = RandomItemPicker(questions)
     lateinit var currentQuestion : Question
 
-    fun selectQuestion() : Question  {
+    fun selectQuestion() : Question {
         val (_, currentQuestion) = picker.pickItem()
         this.currentQuestion = currentQuestion
         return this.currentQuestion

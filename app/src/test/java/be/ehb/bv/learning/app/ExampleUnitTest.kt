@@ -1,6 +1,6 @@
-package be.ehb.bv.learningapp
+package be.ehb.bv.learning.app
 
-import be.ehb.bv.learningapp.model.RandomItemPicker
+import be.ehb.bv.learning.model.RandomItemPicker
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -17,7 +17,7 @@ class ExampleUnitTest {
         while(picker.questionsRemaining()) {
             val (a,b) = picker.pickItem()
             println("$a $b")
-            picker.closeItem(a)
+            picker.closeLastPick()
         }
         //picker.
         //assertEquals(4, 2 + 2)

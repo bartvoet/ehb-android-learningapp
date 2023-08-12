@@ -1,4 +1,4 @@
-package be.ehb.bv.learningapp.model
+package be.ehb.bv.learning.model
 
 import java.util.*
 
