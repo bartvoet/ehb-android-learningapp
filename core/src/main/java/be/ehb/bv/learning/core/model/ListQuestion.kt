@@ -1,4 +1,4 @@
-package be.ehb.bv.learning.model
+package be.ehb.bv.learning.core.model
 
 fun <T> List<T>.equalsIgnoreOrder(other: List<T>) = this.size == other.size && this.toSet() == other.toSet()
 

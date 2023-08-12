@@ -2,9 +2,9 @@ package be.ehb.bv.learning.app.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import be.ehb.bv.learning.model.ItemPicker
-import be.ehb.bv.learning.model.Question
-import be.ehb.bv.learning.model.RandomItemPicker
+import be.ehb.bv.learning.core.model.ItemPicker
+import be.ehb.bv.learning.core.model.Question
+import be.ehb.bv.learning.core.model.RandomItemPicker
 import java.util.logging.Logger
 
 class QuestionSessionViewModel(private val questions : List<Question>) : ViewModel() {

@@ -11,11 +11,10 @@ import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import be.ehb.bv.learning.model.ListQuestion
-import be.ehb.bv.learning.model.Question
+import be.ehb.bv.learning.core.model.ListQuestion
+import be.ehb.bv.learning.core.model.Question
 import be.ehb.bv.learning.app.viewmodel.QuestionSessionViewModel
 import be.ehb.bv.learning.app.viewmodel.QuestionViewModelFactory
-import be.ehb.bv.learning.app.R
 import be.ehb.bv.learning.app.databinding.QuestionFragmentBinding
 
 class QuestionFragment : Fragment() {
