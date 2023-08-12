@@ -18,9 +18,9 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="be.ehb.bv.learning.app.QuestionFragment"
+        android:name="be.ehb.bv.learning.app.ListQuestionFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/question_fragment">
+        tools:layout="@layout/list_question_fragment">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"

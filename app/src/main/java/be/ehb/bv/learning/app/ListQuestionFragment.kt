@@ -15,11 +15,11 @@ import be.ehb.bv.learning.core.model.ListQuestion
 import be.ehb.bv.learning.core.model.Question
 import be.ehb.bv.learning.app.viewmodel.QuestionSessionViewModel
 import be.ehb.bv.learning.app.viewmodel.QuestionViewModelFactory
-import be.ehb.bv.learning.app.databinding.QuestionFragmentBinding
+import be.ehb.bv.learning.app.databinding.ListQuestionFragmentBinding
 
-class QuestionFragment : Fragment() {
+class ListQuestionFragment : Fragment() {
 
-    private var _binding: QuestionFragmentBinding? = null
+    private var _binding: ListQuestionFragmentBinding? = null
 
     private val binding get() = _binding!!
 
@@ -68,7 +68,7 @@ class QuestionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = QuestionFragmentBinding.inflate(inflater, container, false)
+        _binding = ListQuestionFragmentBinding.inflate(inflater, container, false)
 
         questionSession = ViewModelProvider(
             requireActivity(),
