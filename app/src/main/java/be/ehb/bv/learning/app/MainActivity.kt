@@ -9,21 +9,43 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import androidx.lifecycle.ViewModelProvider
 import be.ehb.bv.learning.app.R
 import be.ehb.bv.learning.app.databinding.ActivityMainBinding
+import be.ehb.bv.learning.app.viewmodel.QuestionSessionViewModel
+import be.ehb.bv.learning.app.viewmodel.QuestionViewModelFactory
+import be.ehb.bv.learning.core.model.ListQuestion
+import be.ehb.bv.learning.core.model.Question
 import java.util.logging.Logger
 
 class MainActivity : AppCompatActivity(), QuestionController {
+
+    companion object QuestionsContainer {
+        private val questions: List<Question> =
+            listOf(
+                ListQuestion("hello", listOf("a", "b")),
+                ListQuestion("world", listOf("a", "b", "c")),
+                ListQuestion("a", listOf("a", "b", "c")),
+                ListQuestion("b", listOf("a", "b", "c"))
+            )
+    }
+
 
     override fun nextQuestion() {
         Logger.getLogger("hello").info("a")
     }
 
+    private lateinit var questionSession: QuestionSessionViewModel
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        questionSession = ViewModelProvider(
+            this,
+            QuestionViewModelFactory(questions)
+        )[QuestionSessionViewModel::class.java]
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

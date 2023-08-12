@@ -12,11 +12,11 @@ import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import be.ehb.bv.learning.core.model.ListQuestion
-import be.ehb.bv.learning.core.model.Question
+import be.ehb.bv.learning.app.databinding.ListQuestionFragmentBinding
 import be.ehb.bv.learning.app.viewmodel.QuestionSessionViewModel
 import be.ehb.bv.learning.app.viewmodel.QuestionViewModelFactory
-import be.ehb.bv.learning.app.databinding.ListQuestionFragmentBinding
+import be.ehb.bv.learning.core.model.ListQuestion
+import be.ehb.bv.learning.core.model.Question
 
 class ListQuestionFragment : Fragment() {
 
@@ -25,16 +25,6 @@ class ListQuestionFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var questionSession : QuestionSessionViewModel
-
-    companion object QuestionsContainer {
-        private val questions: List<Question> =
-            listOf(
-                ListQuestion("hello", listOf("a", "b")),
-                ListQuestion("world", listOf("a", "b", "c")),
-                ListQuestion("a", listOf("a", "b", "c")),
-                ListQuestion("b", listOf("a", "b", "c"))
-            )
-    }
 
     inner class FragmentQuestionInterface() : Question.QuestionInterface {
         private val linearLayout = binding.root
@@ -71,13 +61,9 @@ class ListQuestionFragment : Fragment() {
     ): View? {
         _binding = ListQuestionFragmentBinding.inflate(inflater, container, false)
 
-        questionSession = ViewModelProvider(
-            requireActivity(),
-            QuestionViewModelFactory(questions)
-        )[QuestionSessionViewModel::class.java]
-
+        questionSession = ViewModelProvider(requireActivity())[QuestionSessionViewModel::class.java]
         questionSession.selectQuestion()
-        questionSession.currentQuestion.ask( FragmentQuestionInterface())
+        questionSession.currentQuestion.ask( FragmentQuestionInterface() )
 
         return binding.root
     }
