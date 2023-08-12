@@ -1,6 +1,5 @@
 package be.ehb.bv.learningapp.model
 
-import be.ehb.bv.learningapp.ItemPicker
 import java.util.*
 
 class RandomItemPicker<T>(private val items: List<T>) : ItemPicker<T> {

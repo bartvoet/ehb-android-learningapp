@@ -2,7 +2,7 @@ package be.ehb.bv.learningapp.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import be.ehb.bv.learningapp.ItemPicker
+import be.ehb.bv.learningapp.model.ItemPicker
 import be.ehb.bv.learningapp.model.Question
 import be.ehb.bv.learningapp.model.RandomItemPicker
 import java.util.logging.Logger
