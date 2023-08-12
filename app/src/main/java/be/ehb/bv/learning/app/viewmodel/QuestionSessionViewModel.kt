@@ -35,6 +35,7 @@ class QuestionSessionViewModel(private val questions : List<Question>) : ViewMod
 
 class QuestionViewModelFactory(private val questions : List<Question>) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        @Suppress("UNCHECKED_CAST")
         return QuestionSessionViewModel(questions) as T
     }
 }
