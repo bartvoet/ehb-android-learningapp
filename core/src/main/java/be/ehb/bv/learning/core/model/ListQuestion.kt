@@ -4,6 +4,8 @@ fun <T> List<T>.equalsIgnoreOrder(other: List<T>) = this.size == other.size && t
 
 data class ListQuestion(private val question : String, private val answers: List<String>) :
     Question {
+    override val answerRepresentation: String
+        get() = answers.joinToString(" ")
 
     override fun ask(qi: Question.QuestionInterface) {
         qi.askListQuestion(question, answers.size)

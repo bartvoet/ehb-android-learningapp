@@ -35,6 +35,8 @@ class SessionStatusFragment : Fragment() {
         questionSession.currentStatus.observe(viewLifecycleOwner)
             { newStatus -> binding.progressIndicator.text = newStatus }
 
+        questionSession.currentAnswers.observe(viewLifecycleOwner)
+            { correction -> binding.correction.text = correction }
 
         return binding.root
     }

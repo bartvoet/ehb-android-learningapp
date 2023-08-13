@@ -1,6 +1,8 @@
 package be.ehb.bv.learning.core.model
 
 interface Question {
+    val answerRepresentation: String
+
     fun ask(qi: QuestionInterface);
 
     fun validate(qi: QuestionInterface): QuestionFeedback

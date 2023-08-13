@@ -18,6 +18,13 @@
             android:gravity="center"
             style="@style/TextAppearance.AppCompat.Large"/>
         <TextView
+            android:id="@+id/correction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:gravity="center"
+            style="@style/TextAppearance.AppCompat.Large"/>
+        <TextView
             android:id="@+id/progress_indicator"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -17,6 +17,10 @@ class QuestionSessionViewModel(private var questions : List<Question> = listOf()
         MutableLiveData<String>()
     }
 
+    val currentAnswers: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
+
     val currentStatus: MutableLiveData<String> by lazy {
         MutableLiveData<String>()
     }

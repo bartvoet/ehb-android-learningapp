@@ -48,12 +48,16 @@ class QuestionActivity : AppCompatActivity(), QuestionController {
     }
 
     private fun validateAnswer() {
-        if (questionSession.currentQuestion.validate(this.qi).isOK()) {
+        val currentQuestion = questionSession.currentQuestion
+
+        if (currentQuestion.validate(this.qi).isOK()) {
             questionSession.markQuestionAsFinished()
             questionSession.currentResult.value = getString(R.string.OK)
         } else {
             questionSession.currentResult.value = getString(R.string.NOK)
         }
+
+        questionSession.currentAnswers.value = currentQuestion.answerRepresentation
 
         val picker = questionSession.picker
         questionSession.currentStatus.value =
