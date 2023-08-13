@@ -1,5 +1,6 @@
 package be.ehb.bv.learning.app.session
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import be.ehb.bv.learning.app.databinding.EndActionFragmentBinding
 import be.ehb.bv.learning.app.session.viewmodel.QuestionSessionViewModel
 
 class EndActionFragment : Fragment() {
+    private lateinit var controller: QuestionController
     private lateinit var questionSession: QuestionSessionViewModel
 
     private lateinit var binding: EndActionFragmentBinding
@@ -29,6 +31,16 @@ class EndActionFragment : Fragment() {
             findNavController().navigate(R.id.action_EndActionFragment_to_StartActionFragment)
             questionSession.renew()
         }
+
+        binding.stopQuestionEnd.setOnClickListener {
+            controller.stopSession()
+        }
+
         return binding.root
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        controller = context as QuestionController
     }
 }
