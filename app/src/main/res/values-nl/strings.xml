@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Leer-app</string>
     <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
+    
     <string name="start_fragment_label">Start</string>
     <string name="first_fragment_label">Vraag</string>
     <string name="second_fragment_label">Einde</string>
@@ -14,7 +14,7 @@
     <string name="start_question">Start</string>
     <string name="select_excercise">Selecteer oefening</string>
     <string name="stopquestions">stop</string>
-    <string name="NOK">Wrong answer</string>
-    <string name="OK">Correct answer</string>
-    <string name="remaining">remaining</string>
+    <string name="NOK">Fout antwoord</string>
+    <string name="OK">Goed antwoord</string>
+    <string name="remaining">%1$d/%2$d vragen blijven over</string>
 </resources>

@@ -1,6 +1,7 @@
 package be.ehb.bv.learning.app.session
 
 import android.content.ComponentName
+import android.content.Context.BIND_AUTO_CREATE
 import android.content.Intent
 import android.content.ServiceConnection
 import android.icu.text.DateTimePatternGenerator.PatternInfo.OK
@@ -10,9 +11,11 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import be.ehb.bv.learning.app.R
@@ -44,6 +47,19 @@ class QuestionActivity : AppCompatActivity(), QuestionController {
         goToNextStep()
     }
 
+    private fun validateAnswer() {
+        if (questionSession.currentQuestion.validate(this.qi).isOK()) {
+            questionSession.markQuestionAsFinished()
+            questionSession.currentResult.value = getString(R.string.OK)
+        } else {
+            questionSession.currentResult.value = getString(R.string.NOK)
+        }
+
+        val picker = questionSession.picker
+        questionSession.currentStatus.value =
+            getString(R.string.remaining, picker.remainingItems,picker.totalItems)
+    }
+
     private fun goToNextStep() {
         if (!questionSession.picker.questionsRemaining()) {
             findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.action_FirstFragment_to_SecondFragment)
@@ -52,22 +68,6 @@ class QuestionActivity : AppCompatActivity(), QuestionController {
             questionSession.selectQuestion()
             findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.action_FirstFragment_to_FirstFragment)
         }
-    }
-
-    private fun validateAnswer() {
-        if (questionSession
-                .currentQuestion
-                .validate(this.qi).isOK()
-        ) {
-            questionSession.markQuestionAsFinished()
-            questionSession.currentResult.value = getString(R.string.OK)
-
-        } else {
-            questionSession.currentResult.value = getString(R.string.NOK)
-        }
-        val picker = questionSession.picker
-        questionSession.currentStatus.value =
-            "${picker.remainingItems} / ${picker.totalItems} ${getString(R.string.remaining)}"
     }
 
     override fun stopSession() {
