@@ -12,20 +12,28 @@ import be.ehb.bv.learning.core.model.Question
 class QuestionResourceService : Service() {
 
     private companion object QuestionsContainer {
-        private val questions: List<Question> =
-            listOf(
-                ListQuestion("hello", listOf("a", "b")),
-                ListQuestion("world", listOf("a", "b", "c")),
-                ListQuestion("a", listOf("a", "b", "c")),
-                ListQuestion("b", listOf("a", "b", "c"))
+        private val questions  =
+        mapOf (
+            "networking"  to listOf(
+                        ListQuestion("hello", listOf("a", "b")),
+                        ListQuestion("world", listOf("a", "b", "c")),
+                        ListQuestion("a", listOf("a", "b", "c")),
+                        ListQuestion("b", listOf("a", "b", "c"))
+                ) as List<Question>,
+            "programming" to listOf(
+                        ListQuestion("hello", listOf("a", "b")),
+                        ListQuestion("world", listOf("a", "b", "c")),
+                        ListQuestion("a", listOf("a", "b", "c")),
+                        ListQuestion("b", listOf("a", "b", "c"))
+                ) as List<Question>
             )
     }
 
-    public fun getQuestionResources(): List<String> = listOf("network", "programming")
+    public fun getQuestionResources(): List<String> = questions.keys.toList()
 
     public fun getQuestionsForResource(questionResources: String) : List<Question> {
         Log.i("test", questionResources)
-        return questions;
+        return questions[questionResources]?:listOf()
     }
 
     inner class LocalBinder : Binder() {
