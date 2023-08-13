@@ -59,7 +59,7 @@ class ListQuestionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = ListQuestionFragmentBinding.inflate(inflater, container, false)
-        qc?.screenReady(FragmentQuestionInterface())
+        qc.screenReady(FragmentQuestionInterface())
         return binding.root
     }
 

@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import be.ehb.bv.learning.app.databinding.ActionFragmentBinding
+import be.ehb.bv.learning.app.databinding.QuestionActionFragmentBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -16,7 +16,7 @@ private const val ARG_PARAM2 = "param2"
 class ActionFragment : Fragment() {
     private lateinit var controller: QuestionController
 
-    private var _binding: ActionFragmentBinding? = null
+    private var _binding: QuestionActionFragmentBinding? = null
 
     private val binding get() = _binding!!
 
@@ -40,7 +40,7 @@ class ActionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = ActionFragmentBinding.inflate(inflater, container, false)
+        _binding = QuestionActionFragmentBinding.inflate(inflater, container, false)
         binding.nextQuestion.setOnClickListener {
             controller.nextQuestion()
         }

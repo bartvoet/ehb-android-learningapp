@@ -20,7 +20,7 @@
         android:id="@+id/actionFragment"
         android:name="be.ehb.bv.learning.app.session.ActionFragment"
         android:label="start_action_fragment"
-        tools:layout="@layout/action_fragment" >
+        tools:layout="@layout/question_action_fragment" >
         <action
             android:id="@+id/action_ActionFragment_to_EndActionFragment"
             app:destination="@id/endActionFragment" />
@@ -30,7 +30,7 @@
         android:id="@+id/endActionFragment"
         android:name="be.ehb.bv.learning.app.session.EndActionFragment"
         android:label="end_action_fragment"
-        tools:layout="@layout/action_fragment">
+        tools:layout="@layout/question_action_fragment">
         <action
             android:id="@+id/action_EndActionFragment_to_StartActionFragment"
             app:destination="@id/startActionFragment" />
