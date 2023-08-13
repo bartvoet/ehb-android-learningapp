@@ -33,7 +33,7 @@ class ListQuestionFragment : Fragment() {
             et.setText(text)
             et.setOnClickListener { Log.i("test", text) }
             et.layoutParams = ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
             )
             linearLayout.addView(et)
