@@ -22,7 +22,7 @@ class ListQuestionFragment : Fragment() {
     inner class FragmentQuestionInterface() : Question.QuestionInterface {
 
         override fun askListQuestion(question: String, size: Int) {
-            binding.questionTextView.text = question
+            binding.questionTextView.text = "$question ($size)"
             repeat(size) {
                 addEditText("", binding.root)
             }
