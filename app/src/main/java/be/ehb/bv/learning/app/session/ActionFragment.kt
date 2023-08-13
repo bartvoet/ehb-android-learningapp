@@ -1,4 +1,4 @@
-package be.ehb.bv.learning.app
+package be.ehb.bv.learning.app.session
 
 import android.content.Context
 import android.os.Bundle

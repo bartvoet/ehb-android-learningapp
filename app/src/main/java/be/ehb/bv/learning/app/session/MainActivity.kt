@@ -1,4 +1,4 @@
-package be.ehb.bv.learning.app
+package be.ehb.bv.learning.app.session
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +9,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import androidx.lifecycle.ViewModelProvider
+import be.ehb.bv.learning.app.R
 import be.ehb.bv.learning.app.databinding.ActivityMainBinding
 import be.ehb.bv.learning.app.viewmodel.QuestionSessionViewModel
 import be.ehb.bv.learning.app.viewmodel.QuestionViewModelFactory

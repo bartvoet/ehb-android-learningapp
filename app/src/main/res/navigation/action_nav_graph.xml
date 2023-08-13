@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/startActionFragment"
-        android:name="be.ehb.bv.learning.app.StartActionFragment"
+        android:name="be.ehb.bv.learning.app.session.StartActionFragment"
         android:label="start_action_fragment"
         tools:layout="@layout/start_action_fragment">
         <action
@@ -18,7 +18,7 @@
 
     <fragment
         android:id="@+id/actionFragment"
-        android:name="be.ehb.bv.learning.app.ActionFragment"
+        android:name="be.ehb.bv.learning.app.session.ActionFragment"
         android:label="start_action_fragment"
         tools:layout="@layout/action_fragment" >
         <action
@@ -28,7 +28,7 @@
 
     <fragment
         android:id="@+id/endActionFragment"
-        android:name="be.ehb.bv.learning.app.EndActionFragment"
+        android:name="be.ehb.bv.learning.app.session.EndActionFragment"
         android:label="end_action_fragment"
         tools:layout="@layout/action_fragment">
         <action

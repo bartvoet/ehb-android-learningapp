@@ -1,4 +1,4 @@
-package be.ehb.bv.learning.app
+package be.ehb.bv.learning.app.session
 
 import be.ehb.bv.learning.core.model.Question
 
