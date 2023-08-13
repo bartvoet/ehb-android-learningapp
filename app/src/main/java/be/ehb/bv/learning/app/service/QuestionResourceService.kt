@@ -21,6 +21,8 @@ class QuestionResourceService : Service() {
             )
     }
 
+    public fun getQuestionResources(): List<String> = listOf("network", "programming")
+
     public fun getQuestionsForResource(questionResources: String) : List<Question> {
         Log.i("test", questionResources)
         return questions;
