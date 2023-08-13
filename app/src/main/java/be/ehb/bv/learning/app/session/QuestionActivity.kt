@@ -21,6 +21,7 @@ import be.ehb.bv.learning.app.service.QuestionResourceService
 import be.ehb.bv.learning.app.session.viewmodel.QuestionSessionViewModel
 import be.ehb.bv.learning.app.session.viewmodel.QuestionViewModelFactory
 import be.ehb.bv.learning.core.model.Question
+import com.google.android.material.snackbar.Snackbar
 import java.util.logging.Logger
 
 class QuestionActivity : AppCompatActivity(), QuestionController {

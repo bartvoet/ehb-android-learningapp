@@ -9,10 +9,10 @@ import android.os.IBinder
 import android.util.Log
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
-import be.ehb.bv.learning.app.support.IntentConstants
 import be.ehb.bv.learning.app.databinding.ActivitySelectBinding
 import be.ehb.bv.learning.app.service.QuestionResourceService
 import be.ehb.bv.learning.app.session.QuestionActivity
+import be.ehb.bv.learning.app.support.IntentConstants
 import java.util.Arrays.asList
 
 
