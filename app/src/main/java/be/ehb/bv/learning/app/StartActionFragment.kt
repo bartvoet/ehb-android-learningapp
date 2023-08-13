@@ -7,9 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import be.ehb.bv.learning.app.databinding.ActionFragmentBinding
 import be.ehb.bv.learning.app.databinding.StartActionFragmentBinding
-import be.ehb.bv.learning.app.databinding.StartFragmentBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

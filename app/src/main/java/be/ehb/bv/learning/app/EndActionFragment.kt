@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import be.ehb.bv.learning.app.databinding.EndActionFragmentBinding
-import be.ehb.bv.learning.app.databinding.StartActionFragmentBinding
 import be.ehb.bv.learning.app.viewmodel.QuestionSessionViewModel
 
 // TODO: Rename parameter arguments, choose names that match

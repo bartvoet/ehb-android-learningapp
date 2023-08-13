@@ -1,7 +1,6 @@
 package be.ehb.bv.learning.app
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -10,8 +9,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
-import be.ehb.bv.learning.app.R
 import be.ehb.bv.learning.app.databinding.ActivityMainBinding
 import be.ehb.bv.learning.app.viewmodel.QuestionSessionViewModel
 import be.ehb.bv.learning.app.viewmodel.QuestionViewModelFactory
@@ -33,8 +30,11 @@ class MainActivity : AppCompatActivity(), QuestionController {
 
     private lateinit var  qi: Question.QuestionInterface
 
-    override fun registerQuestionInterface(qi: Question.QuestionInterface) {
+     override fun screenReady(qi: Question.QuestionInterface) {
         this.qi = qi
+        questionSession = ViewModelProvider(this)[QuestionSessionViewModel::class.java]
+        questionSession.selectQuestion()
+        questionSession.currentQuestion.ask(qi)
     }
 
     override fun nextQuestion() {

@@ -6,9 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import be.ehb.bv.learning.app.viewmodel.QuestionSessionViewModel
-import be.ehb.bv.learning.app.R
 
 
 import be.ehb.bv.learning.app.databinding.EndFragmentBinding

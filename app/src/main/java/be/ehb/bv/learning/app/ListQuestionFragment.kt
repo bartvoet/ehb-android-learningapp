@@ -10,10 +10,7 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.core.view.children
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import be.ehb.bv.learning.app.databinding.ListQuestionFragmentBinding
-import be.ehb.bv.learning.app.viewmodel.QuestionSessionViewModel
 import be.ehb.bv.learning.core.model.Question
 
 class ListQuestionFragment : Fragment() {
@@ -22,7 +19,6 @@ class ListQuestionFragment : Fragment() {
 
     private val binding get() = _binding!!
 
-    private lateinit var questionSession : QuestionSessionViewModel
     private lateinit var qc : QuestionController
 
     inner class FragmentQuestionInterface() : Question.QuestionInterface {
@@ -55,8 +51,7 @@ class ListQuestionFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        var qc = context as QuestionController
-        qc?.registerQuestionInterface(FragmentQuestionInterface())
+        qc = context as QuestionController
     }
 
     override fun onCreateView(
@@ -64,11 +59,7 @@ class ListQuestionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = ListQuestionFragmentBinding.inflate(inflater, container, false)
-
-        questionSession = ViewModelProvider(requireActivity())[QuestionSessionViewModel::class.java]
-        questionSession.selectQuestion()
-        questionSession.currentQuestion.ask( FragmentQuestionInterface() )
-
+        qc?.screenReady(FragmentQuestionInterface())
         return binding.root
     }
 
