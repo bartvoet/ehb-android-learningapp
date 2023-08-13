@@ -7,7 +7,7 @@ import be.ehb.bv.learning.core.model.Question
 import be.ehb.bv.learning.core.model.RandomItemPicker
 import java.util.logging.Logger
 
-class QuestionSessionViewModel(private val questions : List<Question>) : ViewModel() {
+class QuestionSessionViewModel(private var questions : List<Question> = listOf()) : ViewModel() {
 
     var picker : ItemPicker<Question> = RandomItemPicker(questions)
     lateinit var currentQuestion : Question
@@ -16,6 +16,11 @@ class QuestionSessionViewModel(private val questions : List<Question>) : ViewMod
         val (_, currentQuestion) = picker.pickItem()
         this.currentQuestion = currentQuestion
         return this.currentQuestion
+    }
+
+    fun initQuestions(newQuestions : List<Question>) {
+        this.questions = newQuestions
+        picker = RandomItemPicker(this.questions)
     }
 
     fun markQuestionAsFinished() {
@@ -33,7 +38,7 @@ class QuestionSessionViewModel(private val questions : List<Question>) : ViewMod
     }
 }
 
-class QuestionViewModelFactory(private val questions : List<Question>) : ViewModelProvider.Factory {
+class QuestionViewModelFactory(private val questions : List<Question> = listOf()) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         @Suppress("UNCHECKED_CAST")
         return QuestionSessionViewModel(questions) as T

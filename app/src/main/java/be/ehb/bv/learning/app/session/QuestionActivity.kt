@@ -1,8 +1,14 @@
 package be.ehb.bv.learning.app.session
 
+import android.content.ComponentName
+import android.content.Intent
+import android.content.ServiceConnection
 import android.os.Bundle
+import android.os.IBinder
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -11,25 +17,17 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import be.ehb.bv.learning.app.R
 import be.ehb.bv.learning.app.databinding.ActivityQuestionBinding
+import be.ehb.bv.learning.app.service.QuestionResourceService
 import be.ehb.bv.learning.app.session.viewmodel.QuestionSessionViewModel
 import be.ehb.bv.learning.app.session.viewmodel.QuestionViewModelFactory
 import be.ehb.bv.learning.core.model.ListQuestion
 import be.ehb.bv.learning.core.model.Question
+import java.util.*
 import java.util.logging.Logger
 
 class QuestionActivity : AppCompatActivity(), QuestionController {
 
-    companion object QuestionsContainer {
-        private val questions: List<Question> =
-            listOf(
-                ListQuestion("hello", listOf("a", "b")),
-                ListQuestion("world", listOf("a", "b", "c")),
-                ListQuestion("a", listOf("a", "b", "c")),
-                ListQuestion("b", listOf("a", "b", "c"))
-            )
-    }
-
-    private lateinit var  qi: Question.QuestionInterface
+    private lateinit var qi: Question.QuestionInterface
 
      override fun screenReady(qi: Question.QuestionInterface) {
         this.qi = qi
@@ -64,7 +62,7 @@ class QuestionActivity : AppCompatActivity(), QuestionController {
 
         questionSession = ViewModelProvider(
             this,
-            QuestionViewModelFactory(questions)
+            QuestionViewModelFactory()
         )[QuestionSessionViewModel::class.java]
 
         binding = ActivityQuestionBinding.inflate(layoutInflater)
@@ -98,5 +96,33 @@ class QuestionActivity : AppCompatActivity(), QuestionController {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val intent = Intent(this, QuestionResourceService::class.java)
+        startService(intent)
+        bindService(intent, boundServiceConnection, BIND_AUTO_CREATE)
+    }
+
+    private var boundService : QuestionResourceService? = null
+    private var isBound = false
+
+    private val boundServiceConnection: ServiceConnection = object : ServiceConnection {
+        override fun onServiceConnected(name: ComponentName, service: IBinder) {
+            val binderBridge: QuestionResourceService.LocalBinder =
+                service as QuestionResourceService.LocalBinder
+            boundService = binderBridge.getService()
+            isBound = true
+            Log.i("test", "connected!!!!")
+
+            val newQuestions = boundService?.getQuestionsForResource("networking")?:listOf()
+            questionSession.initQuestions(newQuestions)
+        }
+
+        override fun onServiceDisconnected(name: ComponentName) {
+            isBound = false
+            boundService = null
+        }
     }
 }

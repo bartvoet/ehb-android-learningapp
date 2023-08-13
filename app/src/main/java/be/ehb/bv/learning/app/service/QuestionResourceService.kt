@@ -11,6 +11,10 @@ import be.ehb.bv.learning.core.model.Question
 
 class QuestionResourceService : Service() {
 
+    init {
+        Log.i("test", "service created")
+    }
+
     private companion object QuestionsContainer {
         private val questions  =
         mapOf (
@@ -29,9 +33,9 @@ class QuestionResourceService : Service() {
             )
     }
 
-    public fun getQuestionResources(): List<String> = questions.keys.toList()
+    fun getQuestionResources(): List<String> = questions.keys.toList()
 
-    public fun getQuestionsForResource(questionResources: String) : List<Question> {
+    fun getQuestionsForResource(questionResources: String) : List<Question> {
         Log.i("test", questionResources)
         return questions[questionResources]?:listOf()
     }
