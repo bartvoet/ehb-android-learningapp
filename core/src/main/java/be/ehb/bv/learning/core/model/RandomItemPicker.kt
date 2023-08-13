@@ -19,4 +19,10 @@ class RandomItemPicker<T>(private val items: List<T>) : ItemPicker<T> {
     override fun closeLastPick() {
         l.removeAt(this.pickIndex)
     }
+
+    override val totalItems: Int
+        get() = items.size
+
+    override val remainingItems: Int
+        get() = l.size
 }

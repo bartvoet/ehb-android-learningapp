@@ -6,4 +6,5 @@ interface QuestionController {
     fun screenReady(qi: Question.QuestionInterface)
     fun nextQuestion()
     fun stopSession()
+
 }

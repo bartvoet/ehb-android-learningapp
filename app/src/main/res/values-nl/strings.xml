@@ -14,4 +14,7 @@
     <string name="start_question">Start</string>
     <string name="select_excercise">Selecteer oefening</string>
     <string name="stopquestions">stop</string>
+    <string name="NOK">Wrong answer</string>
+    <string name="OK">Correct answer</string>
+    <string name="remaining">remaining</string>
 </resources>

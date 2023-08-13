@@ -26,4 +26,12 @@
         app:layout_constraintTop_toTopOf="parent"
         />
 
+    <fragment
+        android:id="@+id/fragment_status"
+        android:name="be.ehb.bv.learning.app.session.SessionStatusFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

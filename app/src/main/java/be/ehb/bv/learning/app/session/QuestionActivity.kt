@@ -3,6 +3,7 @@ package be.ehb.bv.learning.app.session
 import android.content.ComponentName
 import android.content.Intent
 import android.content.ServiceConnection
+import android.icu.text.DateTimePatternGenerator.PatternInfo.OK
 import android.os.Bundle
 import android.os.IBinder
 import android.util.Log
@@ -27,8 +28,11 @@ import java.util.logging.Logger
 class QuestionActivity : AppCompatActivity(), QuestionController {
 
     private lateinit var qi: Question.QuestionInterface
+    private lateinit var questionSession: QuestionSessionViewModel
+    private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var binding: ActivityQuestionBinding
 
-     override fun screenReady(qi: Question.QuestionInterface) {
+    override fun screenReady(qi: Question.QuestionInterface) {
         this.qi = qi
         questionSession = ViewModelProvider(this)[QuestionSessionViewModel::class.java]
         questionSession.selectQuestion()
@@ -36,14 +40,12 @@ class QuestionActivity : AppCompatActivity(), QuestionController {
     }
 
     override fun nextQuestion() {
-        Logger.getLogger("hello").info("a")
-        if(questionSession.currentQuestion
-                .validate(this.qi)
-                .isOK()) {
-            questionSession.markQuestionAsFinished()
-        }
+        validateAnswer()
+        goToNextStep()
+    }
 
-        if(!questionSession.picker.questionsRemaining()) {
+    private fun goToNextStep() {
+        if (!questionSession.picker.questionsRemaining()) {
             findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.action_FirstFragment_to_SecondFragment)
             findNavController(R.id.nav_host_fragment_action).navigate(R.id.action_ActionFragment_to_EndActionFragment)
         } else {
@@ -52,13 +54,25 @@ class QuestionActivity : AppCompatActivity(), QuestionController {
         }
     }
 
+    private fun validateAnswer() {
+        if (questionSession
+                .currentQuestion
+                .validate(this.qi).isOK()
+        ) {
+            questionSession.markQuestionAsFinished()
+            questionSession.currentResult.value = getString(R.string.OK)
+
+        } else {
+            questionSession.currentResult.value = getString(R.string.NOK)
+        }
+        val picker = questionSession.picker
+        questionSession.currentStatus.value =
+            "${picker.remainingItems} / ${picker.totalItems} ${getString(R.string.remaining)}"
+    }
+
     override fun stopSession() {
         startActivity(Intent(this, SelectActivity::class.java))
     }
-
-    private lateinit var questionSession: QuestionSessionViewModel
-    private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var binding: ActivityQuestionBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,7 +83,6 @@ class QuestionActivity : AppCompatActivity(), QuestionController {
 
         binding = ActivityQuestionBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         setSupportActionBar(binding.toolbar)
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
@@ -85,14 +98,6 @@ class QuestionActivity : AppCompatActivity(), QuestionController {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
-    }
-
-    override fun onBackPressed() {
-//        if (shouldAllowBack()) {
-//            super.onBackPressed()
-//        } else {
-//            doSomething()
-//        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

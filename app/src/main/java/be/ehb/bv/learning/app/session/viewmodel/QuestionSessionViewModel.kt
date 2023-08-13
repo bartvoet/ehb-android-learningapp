@@ -1,5 +1,6 @@
 package be.ehb.bv.learning.app.session.viewmodel
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import be.ehb.bv.learning.core.model.ItemPicker
@@ -11,6 +12,14 @@ class QuestionSessionViewModel(private var questions : List<Question> = listOf()
 
     var picker : ItemPicker<Question> = RandomItemPicker(questions)
     lateinit var currentQuestion : Question
+
+    val currentResult: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
+
+    val currentStatus: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
 
     fun selectQuestion() : Question {
         val (_, currentQuestion) = picker.pickItem()
