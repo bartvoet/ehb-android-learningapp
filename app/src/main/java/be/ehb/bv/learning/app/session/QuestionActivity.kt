@@ -10,14 +10,14 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import be.ehb.bv.learning.app.R
-import be.ehb.bv.learning.app.databinding.ActivityMainBinding
+import be.ehb.bv.learning.app.databinding.ActivityQuestionBinding
 import be.ehb.bv.learning.app.session.viewmodel.QuestionSessionViewModel
 import be.ehb.bv.learning.app.session.viewmodel.QuestionViewModelFactory
 import be.ehb.bv.learning.core.model.ListQuestion
 import be.ehb.bv.learning.core.model.Question
 import java.util.logging.Logger
 
-class MainActivity : AppCompatActivity(), QuestionController {
+class QuestionActivity : AppCompatActivity(), QuestionController {
 
     companion object QuestionsContainer {
         private val questions: List<Question> =
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity(), QuestionController {
 
     private lateinit var questionSession: QuestionSessionViewModel
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityQuestionBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity(), QuestionController {
             QuestionViewModelFactory(questions)
         )[QuestionSessionViewModel::class.java]
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityQuestionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
