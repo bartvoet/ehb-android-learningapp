@@ -19,16 +19,12 @@ class QuestionResourceService : Service() {
         private val questions  =
         mapOf (
             "networking"  to listOf(
-                        ListQuestion("hello", listOf("a", "b")),
-                        ListQuestion("world", listOf("a", "b", "c")),
-                        ListQuestion("a", listOf("a", "b", "c")),
-                        ListQuestion("b", listOf("a", "b", "c"))
+                        ListQuestion("http-ports", listOf("80", "443")),
+                        ListQuestion("DORA?", listOf("Discover", "Offer", "Request", "Accept"))
                 ) as List<Question>,
             "programming" to listOf(
-                        ListQuestion("hello", listOf("a", "b")),
-                        ListQuestion("world", listOf("a", "b", "c")),
-                        ListQuestion("a", listOf("a", "b", "c")),
-                        ListQuestion("b", listOf("a", "b", "c"))
+                        ListQuestion("Favourite", listOf("Java", "Kotlin","Rust", "C")),
+                        ListQuestion("Favourite OS", listOf("Linux"))
                 ) as List<Question>
             )
     }

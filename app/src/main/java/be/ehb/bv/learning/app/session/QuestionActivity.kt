@@ -8,21 +8,19 @@ import android.os.IBinder
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import be.ehb.bv.learning.app.support.IntentConstants
 import be.ehb.bv.learning.app.R
 import be.ehb.bv.learning.app.databinding.ActivityQuestionBinding
 import be.ehb.bv.learning.app.service.QuestionResourceService
 import be.ehb.bv.learning.app.session.viewmodel.QuestionSessionViewModel
 import be.ehb.bv.learning.app.session.viewmodel.QuestionViewModelFactory
-import be.ehb.bv.learning.core.model.ListQuestion
 import be.ehb.bv.learning.core.model.Question
-import java.util.*
 import java.util.logging.Logger
 
 class QuestionActivity : AppCompatActivity(), QuestionController {
@@ -59,7 +57,6 @@ class QuestionActivity : AppCompatActivity(), QuestionController {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         questionSession = ViewModelProvider(
             this,
             QuestionViewModelFactory()
@@ -108,6 +105,11 @@ class QuestionActivity : AppCompatActivity(), QuestionController {
     private var boundService : QuestionResourceService? = null
     private var isBound = false
 
+    private fun getQuestionResourceName() = intent
+                .getStringExtra(
+                    IntentConstants.INTENT_START_SESSION_RESOURCE_ARG,
+                )?:""
+
     private val boundServiceConnection: ServiceConnection = object : ServiceConnection {
         override fun onServiceConnected(name: ComponentName, service: IBinder) {
             val binderBridge: QuestionResourceService.LocalBinder =
@@ -116,7 +118,8 @@ class QuestionActivity : AppCompatActivity(), QuestionController {
             isBound = true
             Log.i("test", "connected!!!!")
 
-            val newQuestions = boundService?.getQuestionsForResource("networking")?:listOf()
+            val newQuestions = boundService?.
+                getQuestionsForResource(getQuestionResourceName())?:listOf()
             questionSession.initQuestions(newQuestions)
         }
 
