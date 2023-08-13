@@ -14,14 +14,14 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import be.ehb.bv.learning.app.support.IntentConstants
 import be.ehb.bv.learning.app.R
 import be.ehb.bv.learning.app.databinding.ActivityQuestionBinding
 import be.ehb.bv.learning.app.service.QuestionResourceService
 import be.ehb.bv.learning.app.session.viewmodel.QuestionSessionViewModel
 import be.ehb.bv.learning.app.session.viewmodel.QuestionViewModelFactory
+import be.ehb.bv.learning.app.start.SelectActivity
+import be.ehb.bv.learning.app.support.IntentConstants
 import be.ehb.bv.learning.core.model.Question
-import com.google.android.material.snackbar.Snackbar
 import java.util.logging.Logger
 
 class QuestionActivity : AppCompatActivity(), QuestionController {
@@ -50,6 +50,10 @@ class QuestionActivity : AppCompatActivity(), QuestionController {
             questionSession.selectQuestion()
             findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.action_FirstFragment_to_FirstFragment)
         }
+    }
+
+    override fun stopSession() {
+        startActivity(Intent(this, SelectActivity::class.java))
     }
 
     private lateinit var questionSession: QuestionSessionViewModel
@@ -81,6 +85,14 @@ class QuestionActivity : AppCompatActivity(), QuestionController {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
+    }
+
+    override fun onBackPressed() {
+//        if (shouldAllowBack()) {
+//            super.onBackPressed()
+//        } else {
+//            doSomething()
+//        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

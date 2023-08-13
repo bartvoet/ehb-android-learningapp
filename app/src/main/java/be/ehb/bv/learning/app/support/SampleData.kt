@@ -11,9 +11,8 @@ object SampleData {
                 ListQuestion("DORA?", listOf("Discover", "Offer", "Request", "Accept"))
             ) as List<Question>,
             "programming" to listOf(
-                ListQuestion("Favourite", listOf("Java", "Kotlin","Rust", "C")),
+                ListQuestion("Favourite langueges", listOf("Java", "Kotlin","Rust", "C")),
                 ListQuestion("Favourite OS", listOf("Linux"))
             ) as List<Question>
         )
-
 }

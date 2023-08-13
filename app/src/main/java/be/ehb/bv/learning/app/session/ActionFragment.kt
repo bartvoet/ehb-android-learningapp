@@ -20,6 +20,10 @@ class ActionFragment : Fragment() {
         binding.nextQuestion.setOnClickListener {
             controller.nextQuestion()
         }
+        binding.stopQuestion.setOnClickListener {
+            controller.stopSession()
+        }
+
         return binding.root
     }
 

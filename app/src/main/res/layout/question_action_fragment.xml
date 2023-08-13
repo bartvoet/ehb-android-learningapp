@@ -6,10 +6,21 @@
     android:theme="@style/Platform.MaterialComponents"
     tools:context=".session.ActionFragment">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+    <Button
+        android:id="@+id/stop_question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/stopquestions" />
+
     <Button
         android:id="@+id/next_question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/next" />
-
+    </LinearLayout>
 </FrameLayout>
