@@ -15,9 +15,7 @@ import be.ehb.bv.learning.core.model.Question
 
 class ListQuestionFragment : Fragment() {
 
-    private var _binding: ListQuestionFragmentBinding? = null
-
-    private val binding get() = _binding!!
+    private lateinit var binding: ListQuestionFragmentBinding
 
     private lateinit var qc : QuestionController
 
@@ -58,7 +56,7 @@ class ListQuestionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = ListQuestionFragmentBinding.inflate(inflater, container, false)
+        binding = ListQuestionFragmentBinding.inflate(inflater, container, false)
         qc.screenReady(FragmentQuestionInterface())
         return binding.root
     }

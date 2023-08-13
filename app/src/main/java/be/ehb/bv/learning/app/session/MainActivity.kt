@@ -1,18 +1,18 @@
 package be.ehb.bv.learning.app.session
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
-import androidx.lifecycle.ViewModelProvider
 import be.ehb.bv.learning.app.R
 import be.ehb.bv.learning.app.databinding.ActivityMainBinding
-import be.ehb.bv.learning.app.viewmodel.QuestionSessionViewModel
-import be.ehb.bv.learning.app.viewmodel.QuestionViewModelFactory
+import be.ehb.bv.learning.app.session.viewmodel.QuestionSessionViewModel
+import be.ehb.bv.learning.app.session.viewmodel.QuestionViewModelFactory
 import be.ehb.bv.learning.core.model.ListQuestion
 import be.ehb.bv.learning.core.model.Question
 import java.util.logging.Logger

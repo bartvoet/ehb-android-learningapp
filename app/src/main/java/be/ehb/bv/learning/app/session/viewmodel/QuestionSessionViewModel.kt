@@ -1,4 +1,4 @@
-package be.ehb.bv.learning.app.viewmodel
+package be.ehb.bv.learning.app.session.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
