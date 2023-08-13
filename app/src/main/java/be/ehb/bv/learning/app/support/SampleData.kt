@@ -7,12 +7,13 @@ object SampleData {
     val SAMPLE_QUESTIONS  =
         mapOf (
             "networking"  to listOf(
-                ListQuestion("http-ports", listOf("80", "443")),
-                ListQuestion("DORA?", listOf("Discover", "Offer", "Request", "Accept"))
+                ListQuestion("Wat zijn de poorten voor HTTP en HTTPS?", listOf("80", "443")),
+                ListQuestion("Waar staat DORA voor?", listOf("Discover", "Offer", "Request", "Accept"))
             ) as List<Question>,
             "programming" to listOf(
-                ListQuestion("Favourite langueges", listOf("Java", "Kotlin","Rust", "C")),
-                ListQuestion("Favourite OS", listOf("Linux"))
+                ListQuestion("Wat zijn de favoriete programmeertalen?", listOf("Java", "Kotlin","Rust", "C")),
+                ListQuestion("Wat zijn de 2 keywords in Kotlin om een variabele te definieren??",
+                                    listOf("val", "var")),
             ) as List<Question>
         )
 }
