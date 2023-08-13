@@ -1,8 +1,7 @@
-package be.ehb.bv.learning.app
+package be.ehb.bv.learning.app.service
 
 
 import android.app.Service
-import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.os.Binder
@@ -21,10 +20,6 @@ class QuestionResourceService : Service() {
                 ListQuestion("b", listOf("a", "b", "c"))
             )
     }
-
-//    public fun getQuestionResourceNames() : List<String> {
-//        return listOf("network" , "other" )
-//    }
 
     public fun getQuestionsForResource(questionResources: String) : List<Question> {
         Log.i("test", questionResources)
