@@ -1,0 +1,16 @@
+Ports and protocols
+20;FTP;TCP;
+21;FTP Control;TCP;
+22;SSH;TCP;
+23;Telnet;TCP;
+53;DNS;UDP;TCP
+67;DHCP Server;UDP;
+68;DHCP Client;UDP;
+69;TFTP;UDP;
+80;HTTP;TCP;
+161;SNMP;UDP;
+162;SNMP-trap;UDP;
+389;LDAP;TCP;
+443;HTTPS;TCP;
+546;DHCP Client (ipv6);UDP;
+547;DHCP Server (ipv6);UDP;
