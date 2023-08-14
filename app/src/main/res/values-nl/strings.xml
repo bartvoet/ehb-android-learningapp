@@ -5,7 +5,7 @@
     <string name="start_fragment_label">Start</string>
     <string name="first_fragment_label">Vraag</string>
     <string name="second_fragment_label">Einde</string>
-
+    <string name="title_activity_start_actiivity">StartActiivity</string>
     <string name="next">Volgende vraag</string>
     <string name="get_started">Starten</string>
     <string name="start_over">Start opnieuw</string>
@@ -18,6 +18,11 @@
     <string name="OK">Goed antwoord</string>
     <string name="remaining">%1$d/%2$d vragen blijven over</string>
     <string name="load_excercise">Laad oefening</string>
+    <string name="previous">Vorige</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="title_activity_main">MainActivity</string>
 
     <string name="resourcesloaded">Nieuwe oefening geladen</string>
 </resources>
