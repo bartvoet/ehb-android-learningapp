@@ -3,9 +3,9 @@ package be.ehb.bv.learning.app.service
 
 import android.app.Service
 import android.content.Intent
-import android.util.Log
 import android.os.Binder
 import android.os.IBinder
+import android.util.Log
 import be.ehb.bv.learning.app.support.SampleData.SAMPLE_QUESTIONS
 import be.ehb.bv.learning.core.model.ListQuestion
 import be.ehb.bv.learning.core.model.Question

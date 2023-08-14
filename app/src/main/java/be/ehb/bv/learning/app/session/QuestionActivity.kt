@@ -1,21 +1,17 @@
 package be.ehb.bv.learning.app.session
 
 import android.content.ComponentName
-import android.content.Context.BIND_AUTO_CREATE
 import android.content.Intent
 import android.content.ServiceConnection
-import android.icu.text.DateTimePatternGenerator.PatternInfo.OK
 import android.os.Bundle
 import android.os.IBinder
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import be.ehb.bv.learning.app.R
@@ -26,7 +22,6 @@ import be.ehb.bv.learning.app.session.viewmodel.QuestionViewModelFactory
 import be.ehb.bv.learning.app.start.SelectActivity
 import be.ehb.bv.learning.app.support.IntentConstants
 import be.ehb.bv.learning.core.model.Question
-import java.util.logging.Logger
 
 class QuestionActivity : AppCompatActivity(), QuestionController {
 
