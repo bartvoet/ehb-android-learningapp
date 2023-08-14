@@ -25,6 +25,7 @@ class SelectActivity : AppCompatActivity() {
     private fun getSelectedResource() = binding.selectSpinner.selectedItem.toString()
 
     private fun reloadSpinnerOnUI(list: List<String>) {
+        Log.i("test", list.toString())
         runOnUiThread {
             val adapter: ArrayAdapter<*> = getArrayAdapterFromResources()
             binding.selectSpinner.adapter = adapter
@@ -49,7 +50,7 @@ class SelectActivity : AppCompatActivity() {
 
         binding.loadButton.setOnClickListener {
             boundService?.load(loadUrl, this::reloadSpinnerOnUI )
-            Toast.makeText(SelectActivity@this, message, Toast.LENGTH_LONG ).show()
+            Toast.makeText(this, message, Toast.LENGTH_LONG ).show()
         }
         setContentView(binding.root)
     }
