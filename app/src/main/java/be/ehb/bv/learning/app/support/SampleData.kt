@@ -5,7 +5,7 @@ import be.ehb.bv.learning.core.model.Question
 
 object SampleData {
 
-    val TEST_URL = "http://10.0.2.2:8000/ports.csv"
+    val TEST_URL = "https://raw.githubusercontent.com/bartvoet/ehb-android-learningapp/master/core/src/main/resources/ports.csv"
 
     val SAMPLE_QUESTIONS  =
         mapOf (
