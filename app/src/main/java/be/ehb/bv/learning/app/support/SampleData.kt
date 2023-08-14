@@ -4,6 +4,9 @@ import be.ehb.bv.learning.core.model.ListQuestion
 import be.ehb.bv.learning.core.model.Question
 
 object SampleData {
+
+    val TEST_URL = "http://10.0.2.2:8000/ports.csv"
+
     val SAMPLE_QUESTIONS  =
         mapOf (
             "network, port en protocol" to listOf(

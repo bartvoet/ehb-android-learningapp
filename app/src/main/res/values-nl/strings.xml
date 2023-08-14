@@ -17,4 +17,7 @@
     <string name="NOK">Fout antwoord</string>
     <string name="OK">Goed antwoord</string>
     <string name="remaining">%1$d/%2$d vragen blijven over</string>
+    <string name="load_excercise">Laad oefening</string>
+
+    <string name="resourcesloaded">Nieuwe oefening geladen</string>
 </resources>

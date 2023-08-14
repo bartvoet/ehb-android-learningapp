@@ -23,4 +23,8 @@
     <string name="NOK">Wrong answer</string>
     <string name="OK">Correct answer</string>
     <string name="remaining">%1$d/%2$d questions remaining</string>
+    <string name="load_excercise">Load excercise</string>
+
+
+    <string name="resourcesloaded">New excercise loaded</string>
 </resources>
