@@ -38,7 +38,6 @@ class QuestionActivity : AppCompatActivity(), QuestionController {
     override fun screenReady(qi: Question.QuestionInterface) {
         this.qi = qi
         questionSession = ViewModelProvider(this)[QuestionSessionViewModel::class.java]
-        questionSession.selectQuestion()
         questionSession.currentQuestion.ask(qi)
     }
 

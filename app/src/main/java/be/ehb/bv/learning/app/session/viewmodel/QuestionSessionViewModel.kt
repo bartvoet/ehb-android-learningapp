@@ -34,6 +34,7 @@ class QuestionSessionViewModel(private var questions : List<Question> = listOf()
     fun initQuestions(newQuestions : List<Question>) {
         this.questions = newQuestions
         picker = RandomItemPicker(this.questions)
+        selectQuestion()
     }
 
     fun markQuestionAsFinished() {
