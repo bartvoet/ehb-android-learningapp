@@ -15,6 +15,8 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okio.IOException
 import java.io.BufferedReader
+import java.io.File
+import java.io.FileOutputStream
 import java.io.StringReader
 import java.util.*
 import kotlin.concurrent.thread
@@ -61,22 +63,39 @@ class QuestionResourceService : Service() {
                 }
 
                 val csvContent = response.body!!.string()
-                val reader = BufferedReader(StringReader(csvContent))
-
-                val name = splitCsv(reader.readLine())[0]
-                val list : List<Question> =  reader.lineSequence()
-                    .filter { it.isNotBlank() }
-                    .map {
-                        val splitResult = it.split(';', ignoreCase = false)
-                        ListQuestion(splitResult[0],splitResult.subList(0, splitResult.size - 1))
-                    }.toList()
+                val (name, list: List<Question>) = filecontentToQuestions(csvContent)
 
                 dictionaryOfQuestions[name] = list
                 updateValues(getQuestionResources())
 
-                //storeContentLocally(csvContent)
+                storeContentLocally(name, csvContent)
                 storeInDatabase(name, url)
             }
+        }
+    }
+
+    private fun filecontentToQuestions(csvContent: String): Pair<String, List<Question>> {
+        val reader = BufferedReader(StringReader(csvContent))
+
+        val name = splitCsv(reader.readLine())[0]
+        val list: List<Question> = reader.lineSequence()
+            .filter { it.isNotBlank() }
+            .map {
+                val splitResult = it.split(';', ignoreCase = false)
+                ListQuestion(splitResult[0], splitResult.subList(0, splitResult.size - 1))
+            }.toList()
+        return Pair(name, list)
+    }
+
+    private fun storeContentLocally(name: String, csvContent: String) {
+        var newCsvFile: File = File(this.filesDir,name.replace(' ','_'))
+        try {
+            val fileOutPutStream = FileOutputStream(newCsvFile)
+            Log.i("test", "Writing to ${newCsvFile.absolutePath}")
+            fileOutPutStream.write(csvContent.toByteArray())
+            fileOutPutStream.close()
+        } catch (e: IOException) {
+            Log.e("test", e.toString())
         }
     }
 
