@@ -36,6 +36,26 @@ class QuestionResourceService : Service() {
         return dictionaryOfQuestions[questionResources]?:listOf()
     }
 
+    fun fetchResourceFromStorage(resourceName:String) : Pair<String,List<Question>> {
+        val resourceFile = resourceNameToFile(resourceName)
+        val csvContent = resourceFile.inputStream().readBytes().toString(Charsets.UTF_8)
+        return filecontentToQuestions(csvContent)
+    }
+
+    override fun onCreate() {
+        super.onCreate()
+        thread {
+            try {
+                for(resource in questionResourceDatabase.getQuestionResources()) {
+                    val (name:String, questions: List<Question>) = fetchResourceFromStorage(resource.name)
+                    dictionaryOfQuestions[name] = questions
+                }
+            } catch (e: Throwable) {
+                Log.e("test", e.toString())
+            }
+        }
+    }
+
     inner class LocalBinder : Binder() {
         fun getService(): QuestionResourceService = this@QuestionResourceService
     }
@@ -88,7 +108,7 @@ class QuestionResourceService : Service() {
     }
 
     private fun storeContentLocally(name: String, csvContent: String) {
-        var newCsvFile: File = File(this.filesDir,name.replace(' ','_'))
+        var newCsvFile: File = resourceNameToFile(name)
         try {
             val fileOutPutStream = FileOutputStream(newCsvFile)
             Log.i("test", "Writing to ${newCsvFile.absolutePath}")
@@ -98,6 +118,8 @@ class QuestionResourceService : Service() {
             Log.e("test", e.toString())
         }
     }
+
+    private fun resourceNameToFile(name: String) = File(this.filesDir, name.replace(' ', '_'))
 
     private fun storeInDatabase(name: String, url: String) {
         val resources = questionResourceDatabase.getQuestionResources()

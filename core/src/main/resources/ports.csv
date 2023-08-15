@@ -1,16 +1,13 @@
 Ports and protocols
-20;FTP;TCP;
-21;FTP Control;TCP;
-22;SSH;TCP;
-23;Telnet;TCP;
-53;DNS;UDP;TCP
-67;DHCP Server;UDP;
-68;DHCP Client;UDP;
-69;TFTP;UDP;
-80;HTTP;TCP;
-161;SNMP;UDP;
-162;SNMP-trap;UDP;
-389;LDAP;TCP;
-443;HTTPS;TCP;
-546;DHCP Client (ipv6);UDP;
-547;DHCP Server (ipv6);UDP;
+Telnet ;23;TCP;
+DNS: Domain Name System ;53;UDP;TCP
+DHCP Server ;67;UDP;
+DHCP Client ;68;UDP;
+TFTP: Trivial File Transfer Protocol ;69;UDP;
+HTTP: Hypertext Transfer Protocol ;80;TCP;
+SNMP: Simple Network Management Protocol ;161;UDP;
+SNMP-trap: Simple Network Management Protocol, getriggerde notificaties ;162;UDP;
+LDAP: Lightweight Directory Access Protocol ;389;TCP;
+HTTPS: HyperText Transfer Protocol over TLS/SSL ;443;TCP;
+DHCP Client (ipv6) ;546;UDP;
+DHCP Server (ipv6) ;547;UDP;
