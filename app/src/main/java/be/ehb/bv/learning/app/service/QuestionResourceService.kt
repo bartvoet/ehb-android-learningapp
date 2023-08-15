@@ -6,6 +6,8 @@ import android.content.Intent
 import android.os.Binder
 import android.os.IBinder
 import android.util.Log
+import be.ehb.bv.learning.app.storage.QuestionResource
+import be.ehb.bv.learning.app.storage.QuestionResourceDatabase
 import be.ehb.bv.learning.app.support.SampleData.SAMPLE_QUESTIONS
 import be.ehb.bv.learning.core.model.ListQuestion
 import be.ehb.bv.learning.core.model.Question
@@ -14,6 +16,7 @@ import okhttp3.Request
 import okio.IOException
 import java.io.BufferedReader
 import java.io.StringReader
+import java.util.*
 import kotlin.concurrent.thread
 
 class QuestionResourceService : Service() {
@@ -42,7 +45,8 @@ class QuestionResourceService : Service() {
     }
 
     val client: OkHttpClient = OkHttpClient();
-
+    private val questionResourceDatabase
+        by lazy { QuestionResourceDatabase.getDatabase(this).questionResourceDao() }
 
     fun splitCsv(s:String) = s.split(';', ignoreCase = false)
     fun load(url: String, updateValues: (List<String>) -> Unit) {
@@ -68,10 +72,21 @@ class QuestionResourceService : Service() {
                     }.toList()
 
                 dictionaryOfQuestions[name] = list
-                println(dictionaryOfQuestions)
                 updateValues(getQuestionResources())
+
+                //storeContentLocally(csvContent)
+                storeInDatabase(name, url)
             }
         }
+    }
+
+    private fun storeInDatabase(name: String, url: String) {
+        val resources = questionResourceDatabase.getQuestionResources()
+        for (n in resources) {
+            println(n)
+        }
+
+        questionResourceDatabase.addQuestionResource(QuestionResource(name, Date(), url))
     }
 
 

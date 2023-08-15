@@ -17,7 +17,6 @@ import be.ehb.bv.learning.app.support.IntentConstants
 import be.ehb.bv.learning.app.support.SampleData.TEST_URL
 import java.util.Arrays.asList
 
-
 class SelectActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySelectBinding
@@ -34,8 +33,7 @@ class SelectActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        binding = ActivitySelectBinding.inflate(layoutInflater)
+      binding = ActivitySelectBinding.inflate(layoutInflater)
 
         binding.loadUrl.setText(TEST_URL)
         binding.selectButton.setOnClickListener {
@@ -64,8 +62,6 @@ class SelectActivity : AppCompatActivity() {
 
     private var boundService : QuestionResourceService? = null
     private var isBound = false
-
-
 
     private val boundServiceConnection: ServiceConnection = object : ServiceConnection {
         override fun onServiceConnected(name: ComponentName, service: IBinder) {
